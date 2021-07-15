@@ -12,7 +12,7 @@ disabled = true
 
 [php]
 format = "via [🐘 $version](147 bold) "
-
+detect_files=["composer.json"]
 
 [git_branch]
 symbol = "🌱 "
