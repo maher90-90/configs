@@ -58,16 +58,17 @@ fi
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
-BLINK='\e[5m'
-NORMAL='\e[0m'
-REDBG='\e[41m'
-RED='\e[31m'
-GREEN='\e[92m'
-BLUE='\e[34m'
-WHITE='\e[39m'
+BLINK='\[\e[5m\]'
+NORMAL='\[\e[0m\]'
+REDBG='\[\e[41m\]'
+RED='\[\e[31m\]'
+GREEN='\[\e[92m\]'
+BLUE='\[\e[34m\]'
+WHITE='\[\e[39m\]'
+MAGENTA='\[\e[35m\]'
 if [ "$color_prompt" = yes ]; then
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PS1="[${BLINK}${GREEN}\u${NORMAL}@\h ${BLUE}\W${WHITE}]\$ ${RED}\$(parse_git_branch)${WHITE}"
+        PS1="${BLUE}[${BLINK}${GREEN}\u${NORMAL}${WHITE}@\h ${MAGENTA}\W${BLUE}]${RED}\$(parse_git_branch)${WHITE}\$ "
 else
     #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
     PS1="[${BLINK}${RED}\u${NORMAL}@\h ${BLUE}\W${WHITE}]\$ "
